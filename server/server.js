@@ -1,7 +1,10 @@
 const express = require("express");
-const port = process.env.port || 5000;
+const connectDB = require("./db/driver");
 
 const app = express();
+
+const port = process.env.port || 5000;
+connectDB();
 
 let uuid = 0;
 const users = [
@@ -12,6 +15,8 @@ const users = [
     { id: uuid++, name: "Vikesh", age: 24 },
     { id: uuid++, name: "Ramu", age: 29 }
 ];
+
+app.use("/api/customerModel", require("./api/customer"));
 
 app.get("/users", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "http://localhost:1234");
