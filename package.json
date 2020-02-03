@@ -1,0 +1,20 @@
+{
+    "name": "fullstack",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev:client": "rimraf ./output/dist && parcel ./client/public/index.html --out-dir ./output/dist --cache-dir ./output/.cache --open",
+        "dev:server": "nodemon ./server/server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2",
+        "parcel-bundler": "^1.12.4",
+        "rimraf": "^3.0.1"
+    }
+}
