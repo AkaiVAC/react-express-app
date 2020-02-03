@@ -1,18 +1,20 @@
-const mongoose = require("mongoose");
+const MongoClient = require("mongodb").MongoClient;
+const assert = require("assert");
+const uri = process.env.uri;
+const client = new MongoClient(uri, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+});
+console.log("db connected");
+client.connect(async err => {
+	const collection = client.db("test").collection("users");
+	const docs = await client
+		.db("test")
+		.collection("users")
+		.find();
 
-const URI =
-    "mongodb+srv://atlasAdmin:admin@cluster0-cx7xb.mongodb.net/test?retryWrites=true&w=majority";
+	console.log(docs);
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect(URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log("db connected");
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-module.exports = connectDB;
+	// perform actions on the collection object
+	client.close();
+});
