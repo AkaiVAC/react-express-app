@@ -16,7 +16,7 @@
 	"devDependencies": {
 		"dotenv": "8.2.0",
 		"nodemon": "2.0.7",
-		"parcel-bundler": "1.12.4",
+		"parcel-bundler": "1.12.5",
 		"rimraf": "3.0.2"
 	}
 }
